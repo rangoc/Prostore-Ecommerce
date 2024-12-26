@@ -4,6 +4,7 @@ import { signIn, signOut } from "@/auth";
 import { prisma } from "@/db/prisma";
 import { hashSync } from "bcrypt-ts-edge";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
+import { formatError } from "../utils";
 import { signInFormSchema, signUpFormSchema } from "../validators";
 
 // Sign in user with credentials
@@ -72,6 +73,6 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
       throw error;
     }
 
-    return { success: false, message: "Passwords do not match" };
+    return { success: false, message: formatError(error) };
   }
 }
