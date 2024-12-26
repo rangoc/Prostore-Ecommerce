@@ -72,6 +72,6 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
       throw error;
     }
 
-    return { success: false, message: "Invalid credentials" };
+    return { success: false, message: "Passwords do not match" };
   }
 }
